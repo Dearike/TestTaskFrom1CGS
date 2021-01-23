@@ -34,13 +34,11 @@ namespace TestTaskFrom1CGS
         private static int GetMinTravelPrice(int[][] cells)
         {
             var frontier = new PriorityQueue<int, Cell>();
-            var cameFrom = new Dictionary<Cell, Cell>();
             var costSoFar = new Dictionary<Cell, int>();
 
             Cell startCell = new Cell(0, 0, cells);
 
             frontier.Enqueue(0, startCell);
-            cameFrom[startCell] = startCell;
             costSoFar[startCell] = 0;
 
             while (!frontier.IsEmpty)
@@ -57,7 +55,6 @@ namespace TestTaskFrom1CGS
                     {
                         costSoFar[cell] = newCost;
                         frontier.Enqueue(newCost, cell);
-                        cameFrom[cell] = currentCell;
                     }
                 }
             }
